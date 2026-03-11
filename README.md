@@ -1,0 +1,83 @@
+# 👗 StyleRoast – Your AI Stylist & Roaster
+
+[![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](#)
+[![Expo](https://img.shields.io/badge/Expo-1B1F23?style=for-the-badge&logo=expo&logoColor=white)](#)
+[![OpenAI Vision](https://img.shields.io/badge/OpenAI_Vision-412991?style=for-the-badge&logo=openai&logoColor=white)](#)
+
+> **"Don't let them catch you lacking! Get roasted or styled by an AI that knows fashion better than you."**
+
+StyleRoast is an AI-powered React Native mobile application built to analyze your daily outfits. Using advanced Vision AI capabilities, it offers two unique modes:
+1. 🔥 **Roast Me:** Get absolutely destroyed by our AI for wearing those socks with sandals.
+2. ✨ **Style Me:** Receive constructive, professional advice on how to elevate your look.
+
+Perfect for fashion enthusiasts, indecisive morning dressers, or anyone who just wants a good laugh!
+
+<div align="center">
+  *(Insert Application Screenshots Here Later)*
+</div>
+
+---
+
+## ✨ Features
+
+- **📸 In-App Camera Integration:** Snap a picture of your outfit directly from the app or upload one from your gallery.
+- **🤖 Advanced Vision AI:** Powered by the GPT-4 Vision model to deeply analyze clothing patterns, color coordination, and style trends.
+- **🎨 Dynamic UI/UX:** A stunning, modern interface featuring smooth animations and glassmorphism elements.
+- **📱 Cross Platform:** Fully functional on both iOS and Android thanks to Expo and React Native.
+
+## 🛠️ Tech Stack
+
+- **Frontend:** React Native, Expo, React Navigation
+- **Styling:** StyleSheet & Custom Theming
+- **AI Integration:** OpenAI API (GPT-4 Vision)
+- **State Management:** React Hooks
+
+## 🚀 Getting Started
+
+Follow these instructions to get a copy of the project up and running on your local machine.
+
+### Prerequisites
+
+Make sure you have Node.js and Expo CLI installed on your computer.
+- Node.js (v18 or higher)
+- Expo Go app on your physical iOS/Android device 
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/yourusername/StyleRoast.git
+   cd StyleRoast
+   ```
+
+2. **Install all dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Set up your Environment Variables:**
+   - Create a `.env` file in the root directory.
+   - Add your OpenAI API key:
+     ```env
+     EXPO_PUBLIC_OPENAI_API_KEY=your_openai_api_key_here
+     ```
+
+4. **Start the application:**
+   ```bash
+   npx expo start
+   ```
+
+5. **Run on your device:**
+   - Open the **Expo Go** app on your phone.
+   - Scan the QR code displayed in your terminal.
+
+---
+
+## 🤝 Contributing
+Contributions, issues, and feature requests are always welcome! Feel free to check the [issues page](#).
+
+## 📝 License
+This project is [MIT](https://choosealicense.com/licenses/mit/) licensed.
+
+---
+> **Developer Note:** This project was created to demonstrate modern AI integrations (specifically Vision AI) in mobile ecosystems and how quickly scalable architectures can be built using React Native.
