@@ -6,7 +6,7 @@
 
 > **"Don't let them catch you lacking! Get roasted or styled by an AI that knows fashion better than you."**
 
-StyleRoast is an AI-powered React Native mobile application built to analyze your daily outfits. Using advanced Vision AI capabilities, it offers two unique modes:
+StyleRoast is an AI-powered React Native mobile application built to analyze your daily outfits. Using advanced Google Gemini Vision AI capabilities, it offers two unique modes:
 1. 🔥 **Roast Me:** Get absolutely destroyed by our AI for wearing those socks with sandals.
 2. ✨ **Style Me:** Receive constructive, professional advice on how to elevate your look.
 
@@ -21,7 +21,7 @@ Perfect for fashion enthusiasts, indecisive morning dressers, or anyone who just
 ## ✨ Features
 
 - **📸 In-App Camera Integration:** Snap a picture of your outfit directly from the app or upload one from your gallery.
-- **🤖 Advanced Vision AI:** Powered by the GPT-4 Vision model to deeply analyze clothing patterns, color coordination, and style trends.
+- **🤖 Advanced Vision AI:** Powered by the Google Gemini AI (1.5 / 2.5 Flash) model to deeply analyze clothing patterns, color coordination, and style trends.
 - **🎨 Dynamic UI/UX:** A stunning, modern interface featuring smooth animations and glassmorphism elements.
 - **📱 Cross Platform:** Fully functional on both iOS and Android thanks to Expo and React Native.
 
@@ -29,7 +29,7 @@ Perfect for fashion enthusiasts, indecisive morning dressers, or anyone who just
 
 - **Frontend:** React Native, Expo, React Navigation
 - **Styling:** StyleSheet & Custom Theming
-- **AI Integration:** OpenAI API (GPT-4 Vision)
+- **AI Integration:** Google Gemini API (Vision)
 - **State Management:** React Hooks
 
 ## 🚀 Getting Started
@@ -57,9 +57,9 @@ Make sure you have Node.js and Expo CLI installed on your computer.
 
 3. **Set up your Environment Variables:**
    - Create a `.env` file in the root directory.
-   - Add your OpenAI API key:
+   - Add your free Google Gemini API key:
      ```env
-     EXPO_PUBLIC_OPENAI_API_KEY=your_openai_api_key_here
+     EXPO_PUBLIC_GEMINI_API_KEY=your_gemini_api_key_here
      ```
 
 4. **Start the application:**
@@ -78,6 +78,3 @@ Contributions, issues, and feature requests are always welcome! Feel free to che
 
 ## 📝 License
 This project is [MIT](https://choosealicense.com/licenses/mit/) licensed.
-
----
-> **Developer Note:** This project was created to demonstrate modern AI integrations (specifically Vision AI) in mobile ecosystems and how quickly scalable architectures can be built using React Native.
