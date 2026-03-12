@@ -1,8 +1,11 @@
-# 👗 StyleRoast – Your AI Stylist & Roaster
+<div align="center">
+  <img src="./github_assets/logo.png" width="180" alt="StyleRoast Logo" />
+  <h1>👗 StyleRoast – Your AI Stylist & Roaster</h1>
+</div>
 
 [![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](#)
 [![Expo](https://img.shields.io/badge/Expo-1B1F23?style=for-the-badge&logo=expo&logoColor=white)](#)
-[![OpenAI Vision](https://img.shields.io/badge/OpenAI_Vision-412991?style=for-the-badge&logo=openai&logoColor=white)](#)
+[![Google Gemini Vision](https://img.shields.io/badge/Gemini_Vision-4285F4?style=for-the-badge&logo=google&logoColor=white)](#)
 
 > **"Don't let them catch you lacking! Get roasted or styled by an AI that knows fashion better than you."**
 
@@ -13,7 +16,8 @@ StyleRoast is an AI-powered React Native mobile application built to analyze you
 Perfect for fashion enthusiasts, indecisive morning dressers, or anyone who just wants a good laugh!
 
 <div align="center">
-  *(Insert Application Screenshots Here Later)*
+  <h3>✨ App Screenshots</h3>
+  *(To add your own screenshots, take them on your phone, save them to the `github_assets` folder, and link them here!)*
 </div>
 
 ---
