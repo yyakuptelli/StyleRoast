@@ -71,10 +71,4 @@ Make sure you have Node.js and Expo CLI installed on your computer.
    - Open the **Expo Go** app on your phone.
    - Scan the QR code displayed in your terminal.
 
----
 
-## 🤝 Contributing
-Contributions, issues, and feature requests are always welcome! Feel free to check the [issues page](#).
-
-## 📝 License
-This project is [MIT](https://choosealicense.com/licenses/mit/) licensed.
