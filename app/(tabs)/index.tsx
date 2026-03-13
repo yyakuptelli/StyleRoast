@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, Image, ActivityIndicator, ScrollView, Platform, Alert } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, Image, ActivityIndicator, ScrollView, Platform, Alert, Share } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function TabOneScreen() {
   const [imageUri, setImageUri] = useState<string | null>(null);
@@ -10,6 +11,7 @@ export default function TabOneScreen() {
   const [isLoading, setIsLoading] = useState(false);
   const [resultText, setResultText] = useState<string | null>(null);
   const [mode, setMode] = useState<'roast' | 'style' | null>(null);
+  const [score, setScore] = useState<number | null>(null);
   const [lang, setLang] = useState<'en' | 'tr'>('en');
 
   const t = {
@@ -34,6 +36,8 @@ export default function TabOneScreen() {
       errEnv: '⚠️ Please create a .env file and add your EXPO_PUBLIC_GEMINI_API_KEY.',
       errApi: 'The AI couldn\'t figure out this outfit. Try another picture!',
       errSrv: 'Oh no! Our fashionable servers are currently down. Please try again.',
+      shareTitle: 'My StyleRoast Result',
+      scoreLabel: 'Style Score',
       promptLang: 'Reply entirely in English.',
     },
     tr: {
@@ -57,6 +61,8 @@ export default function TabOneScreen() {
       errEnv: '⚠️ Lütfen .env dosyasına EXPO_PUBLIC_GEMINI_API_KEY ekleyin.',
       errApi: 'Yapay zeka bu kombini çözemedi. Başka bir fotoğraf dene!',
       errSrv: 'Eyvah! Sunucularımız şu an dinleniyor. Lütfen tekrar dene.',
+      shareTitle: 'StyleRoast Sonucum',
+      scoreLabel: 'Stil Puanı',
       promptLang: 'Sadece ama sadece Türkçe dilinde cevap ver.',
     }
   };
@@ -125,6 +131,7 @@ export default function TabOneScreen() {
     setMode(selectedMode);
     setIsLoading(true);
     setResultText(null);
+    setScore(null);
 
     // Using Google Gemini API (Free Tier available without credit card)
     const apiKey = process.env.EXPO_PUBLIC_GEMINI_API_KEY;
@@ -136,9 +143,10 @@ export default function TabOneScreen() {
     }
 
     try {
+      const scoreInstruction = 'IMPORTANT: Start your response with exactly "SCORE: X/10" on the first line (where X is your rating from 1 to 10), then continue with your analysis on a new line.';
       const promptText = selectedMode === 'roast'
-        ? `You are a savage, brutal, and hilarious fashion critic. Look at this outfit photo and roast it like there is no tomorrow. Be funny and sarcastic. Point out exactly which clothing items look bad. ${currentT.promptLang}`
-        : `You are a high-end, extremely professional celebrity stylist. Analyze the clothing items in this photo and give constructive advice on how to improve the styling, color coordination, and overall vibe. ${currentT.promptLang}`;
+        ? `You are a savage, brutal, and hilarious fashion critic. Look at this outfit photo and roast it like there is no tomorrow. Be funny and sarcastic. Point out exactly which clothing items look bad. ${scoreInstruction} ${currentT.promptLang}`
+        : `You are a high-end, extremely professional celebrity stylist. Analyze the clothing items in this photo and give constructive advice on how to improve the styling, color coordination, and overall vibe. ${scoreInstruction} ${currentT.promptLang}`;
 
       const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
         method: 'POST',
@@ -160,7 +168,29 @@ export default function TabOneScreen() {
       if (data.error) {
         setResultText(`API Error: ${data.error.message}`);
       } else if (data.candidates && data.candidates[0].content.parts[0].text) {
-        setResultText(data.candidates[0].content.parts[0].text);
+        const fullText = data.candidates[0].content.parts[0].text;
+        // Extract score from response
+        const scoreMatch = fullText.match(/SCORE:\s*(\d+)\/10/);
+        const extractedScore = scoreMatch ? parseInt(scoreMatch[1]) : null;
+        const cleanText = fullText.replace(/SCORE:\s*\d+\/10\n?/, '').trim();
+        setScore(extractedScore);
+        setResultText(cleanText);
+        // Save to history
+        try {
+          const historyItem = {
+            id: Date.now().toString(),
+            mode: selectedMode,
+            score: extractedScore,
+            text: cleanText,
+            imageUri: imageUri,
+            date: new Date().toISOString(),
+            lang: lang,
+          };
+          const existing = await AsyncStorage.getItem('styleroast_history');
+          const history = existing ? JSON.parse(existing) : [];
+          history.unshift(historyItem);
+          await AsyncStorage.setItem('styleroast_history', JSON.stringify(history.slice(0, 50)));
+        } catch (e) { console.log('History save error', e); }
       } else {
         setResultText(currentT.errApi);
       }
@@ -239,7 +269,32 @@ export default function TabOneScreen() {
           <Text style={styles.resultTitle}>
             {mode === 'roast' ? currentT.titleRoast : currentT.titleStyle}
           </Text>
+
+          {/* Score Badge */}
+          {score !== null && (
+            <View style={styles.scoreBadge}>
+              <Text style={styles.scoreNumber}>{score}</Text>
+              <Text style={styles.scoreOut}>/10</Text>
+              <Text style={styles.scoreLabel}>{currentT.scoreLabel}</Text>
+            </View>
+          )}
+
           <Text style={styles.resultContent}>{resultText}</Text>
+
+          {/* Share Button */}
+          <TouchableOpacity
+            style={styles.shareButton}
+            onPress={async () => {
+              try {
+                await Share.share({
+                  message: `${currentT.shareTitle}\n\n${score ? `⭐ ${score}/10\n\n` : ''}${resultText}\n\n📱 Analyzed by StyleRoast App`,
+                });
+              } catch (e) { console.log(e); }
+            }}
+          >
+            <Ionicons name="share-outline" size={18} color="#fff" />
+            <Text style={styles.shareText}>{lang === 'en' ? 'Share Result' : 'Sonucu Paylaş'}</Text>
+          </TouchableOpacity>
         </View>
       )}
 
@@ -389,5 +444,49 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 24,
     color: '#EBEBF5',
+  },
+  scoreBadge: {
+    alignItems: 'center',
+    backgroundColor: 'rgba(255, 255, 255, 0.08)',
+    borderRadius: 16,
+    paddingVertical: 14,
+    paddingHorizontal: 20,
+    marginBottom: 16,
+    alignSelf: 'center',
+    flexDirection: 'row',
+    gap: 4,
+  },
+  scoreNumber: {
+    fontSize: 40,
+    fontWeight: '900',
+    color: '#FFD60A',
+  },
+  scoreOut: {
+    fontSize: 20,
+    fontWeight: '600',
+    color: '#FFD60A',
+    marginTop: 10,
+  },
+  scoreLabel: {
+    fontSize: 12,
+    color: '#8e8e93',
+    marginLeft: 10,
+    marginTop: 12,
+  },
+  shareButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(255, 255, 255, 0.12)',
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderRadius: 14,
+    marginTop: 16,
+    gap: 8,
+  },
+  shareText: {
+    color: '#FFF',
+    fontSize: 14,
+    fontWeight: '600',
   },
 });
