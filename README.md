@@ -25,6 +25,14 @@ Perfect for fashion enthusiasts, indecisive morning dressers, or anyone who just
     <img src="./github_assets/screenshot_history.png" width="250" alt="History Tab" />
   </p>
   <p><em>Home Screen &nbsp;|&nbsp; 🔥 Roast + Score &nbsp;|&nbsp; 📜 History Tab</em></p>
+
+  <h3>🇹🇷 Turkish Mode</h3>
+  <p>
+    <img src="./github_assets/screenshot_tr_roast.png" width="250" alt="Turkish Roast" />
+    &nbsp;&nbsp;
+    <img src="./github_assets/screenshot_tr_style.png" width="250" alt="Turkish Style" />
+  </p>
+  <p><em>🔥 Türkçe Linç &nbsp;|&nbsp; ✨ Türkçe Stil Vizyonu</em></p>
 </div>
 
 ---
