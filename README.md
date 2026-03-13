@@ -16,8 +16,15 @@ StyleRoast is an AI-powered React Native mobile application built to analyze you
 Perfect for fashion enthusiasts, indecisive morning dressers, or anyone who just wants a good laugh!
 
 <div align="center">
-  <h3>✨ App Screenshots</h3>
-  *(To add your own screenshots, take them on your phone, save them to the `github_assets` folder, and link them here!)*
+  <h3>📱 App Screenshots</h3>
+  <p>
+    <img src="./github_assets/screenshot_home.png" width="250" alt="Home Screen" />
+    &nbsp;&nbsp;
+    <img src="./github_assets/screenshot_roast.png" width="250" alt="Roast Result" />
+    &nbsp;&nbsp;
+    <img src="./github_assets/screenshot_turkish.png" width="250" alt="Turkish Mode" />
+  </p>
+  <p><em>Home Screen &nbsp;|&nbsp; 🔥 Roast Mode &nbsp;|&nbsp; 🇹🇷 Turkish Mode</em></p>
 </div>
 
 ---
