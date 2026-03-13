@@ -26,7 +26,8 @@ Perfect for fashion enthusiasts, indecisive morning dressers, or anyone who just
 
 - **📸 In-App Camera Integration:** Snap a picture of your outfit directly from the app or upload one from your gallery.
 - **🤖 Advanced Vision AI:** Powered by the Google Gemini AI (1.5 / 2.5 Flash) model to deeply analyze clothing patterns, color coordination, and style trends.
-- **🎨 Dynamic UI/UX:** A stunning, modern interface featuring smooth animations and glassmorphism elements.
+- **� Bilingual Support (EN / TR):** Switch between English and Turkish with a single tap. Both the UI and AI responses adapt to your selected language in real-time.
+- **�🎨 Dynamic UI/UX:** A stunning, modern interface featuring smooth animations and glassmorphism elements.
 - **📱 Cross Platform:** Fully functional on both iOS and Android thanks to Expo and React Native.
 
 ## 🛠️ Tech Stack
