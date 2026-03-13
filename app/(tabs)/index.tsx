@@ -10,6 +10,7 @@ export default function TabOneScreen() {
   const [isLoading, setIsLoading] = useState(false);
   const [resultText, setResultText] = useState<string | null>(null);
   const [mode, setMode] = useState<'roast' | 'style' | null>(null);
+  const [language, setLanguage] = useState<'en' | 'tr'>('tr'); // Default to Turkish based on user request
 
   const openCamera = async () => {
     const { status } = await ImagePicker.requestCameraPermissionsAsync();
