@@ -20,11 +20,11 @@ Perfect for fashion enthusiasts, indecisive morning dressers, or anyone who just
   <p>
     <img src="./github_assets/screenshot_home.png" width="250" alt="Home Screen" />
     &nbsp;&nbsp;
-    <img src="./github_assets/screenshot_roast.png" width="250" alt="Roast Result" />
+    <img src="./github_assets/screenshot_roast.png" width="250" alt="Roast with Score" />
     &nbsp;&nbsp;
-    <img src="./github_assets/screenshot_turkish.png" width="250" alt="Turkish Mode" />
+    <img src="./github_assets/screenshot_history.png" width="250" alt="History Tab" />
   </p>
-  <p><em>Home Screen &nbsp;|&nbsp; 🔥 Roast Mode &nbsp;|&nbsp; 🇹🇷 Turkish Mode</em></p>
+  <p><em>Home Screen &nbsp;|&nbsp; 🔥 Roast + Score &nbsp;|&nbsp; 📜 History Tab</em></p>
 </div>
 
 ---
@@ -33,8 +33,11 @@ Perfect for fashion enthusiasts, indecisive morning dressers, or anyone who just
 
 - **📸 In-App Camera Integration:** Snap a picture of your outfit directly from the app or upload one from your gallery.
 - **🤖 Advanced Vision AI:** Powered by the Google Gemini AI (1.5 / 2.5 Flash) model to deeply analyze clothing patterns, color coordination, and style trends.
-- **� Bilingual Support (EN / TR):** Switch between English and Turkish with a single tap. Both the UI and AI responses adapt to your selected language in real-time.
-- **�🎨 Dynamic UI/UX:** A stunning, modern interface featuring smooth animations and glassmorphism elements.
+- **⭐ AI Scoring System:** Each outfit gets a brutal or fair 1-10 score displayed with a stunning golden badge.
+- **📤 Share Results:** Share your AI roast or style advice instantly to Instagram, WhatsApp, Twitter, and more.
+- **📜 Analysis History:** All your past analyses are saved and displayed in a beautiful History tab with score progress bars.
+- **🌍 Bilingual Support (EN / TR):** Switch between English and Turkish with a single tap. Both the UI and AI responses adapt to your selected language in real-time.
+- **🎨 Dynamic UI/UX:** A stunning, modern interface featuring smooth animations and glassmorphism elements.
 - **📱 Cross Platform:** Fully functional on both iOS and Android thanks to Expo and React Native.
 
 ## 🛠️ Tech Stack
